@@ -35,7 +35,7 @@ const deleteOne = (Model, name = "document") => (0, express_async_handler_1.defa
     if (!document) {
         return next(new apiError_1.apiError(`No ${name} for this id ${req.params.id}`, 404));
     }
-    res.status(204).send();
+    res.status(204).json({ message: "comment deleted" });
 }));
 exports.deleteOne = deleteOne;
 const getOne = (Model, name = "document") => (0, express_async_handler_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {

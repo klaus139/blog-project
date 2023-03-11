@@ -30,7 +30,7 @@ export const updateOne = (Model:any, name = "document") =>
       return next(new apiError(`No ${name} for this id ${req.params.id}`, 404));
     }
 
-    res.status(204).send();
+    res.status(204).json({message:"comment deleted"});
   });
 
 

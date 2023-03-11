@@ -13,6 +13,7 @@ const index_1 = __importDefault(require("./routes/index"));
 const Auth_1 = __importDefault(require("./routes/Auth"));
 const Post_1 = __importDefault(require("./routes/Post"));
 const Category_1 = __importDefault(require("./routes/Category"));
+const Comment_1 = __importDefault(require("./routes/Comment"));
 const apiError_1 = require("./utils/apiError");
 const globalErrorHandler_1 = require("./utils/globalErrorHandler");
 require("./config/database");
@@ -25,6 +26,7 @@ app.use('/api/', index_1.default);
 app.use('/api/auth', Auth_1.default);
 app.use('/api/post', Post_1.default);
 app.use('/api/categories', Category_1.default);
+app.use('/api/comments', Comment_1.default);
 // 404 error
 app.all("*", (req, res, next) => {
     // create error

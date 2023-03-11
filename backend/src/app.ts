@@ -9,6 +9,7 @@ import indexRouter from './routes/index'
 import authRouter from './routes/Auth'
 import postRouter from './routes/Post'
 import categoryRouter from './routes/Category'
+import commentRouter from './routes/Comment'
 import { apiError } from './utils/apiError';
 import { globalErrHandler } from './utils/globalErrorHandler';
 
@@ -26,6 +27,7 @@ app.use('/api/', indexRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/post', postRouter)
 app.use('/api/categories', categoryRouter)
+app.use('/api/comments', commentRouter)
 
 
 
