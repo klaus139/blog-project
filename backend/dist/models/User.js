@@ -47,7 +47,8 @@ const userSchema = new mongoose_1.default.Schema({
         default: "user",
     },
     salt: {
-        type: String
+        type: String,
+        required: [true, "Salt is required"],
     },
 }, { timestamps: true });
 const User = mongoose_1.default.model("User", userSchema);

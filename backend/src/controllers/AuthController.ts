@@ -8,7 +8,9 @@ import {
   GenerateSignature,
   option,
   registerSchema,
-  createToken
+  createToken,
+  loginSchema,
+  validatePassword
 } from "../utils/validation";
 import { apiError } from "../utils/apiError";
 import { v4 as uuidV4 } from "uuid";
@@ -104,5 +106,46 @@ export const registerAdmin = async (req: Request, res: Response) => {
   };
 
 
+  export const Login = async (req: Request, res: Response, next: NextFunction)=> {
+    try{
+        
+        const { email, password} = req.body;
+
+        const validateResult = loginSchema.validate(req.body, option);
+    if (validateResult.error) {
+      return res.status(400).json({
+        Error: validateResult.error.details[0].message,
+      });
+    }
+
+    const user = await User.findOne({ email });
+
+if (user) {
+    const validation = await validatePassword(
+      password,
+      user.password,
+      user.salt,
+    );
+    if (validation) {
+      // Generate a new Signature
+      let signature = createToken(user._id)
+      return res.status(200).json({
+        message: "Login successful",
+        signature: signature,
+        id: user.id,
+        email: user.email,
+        role: user.role,
+        name: user.name,
+      });
+    }
+    return res.status(400).json({
+      Error: "Wrong Username or password or not a verified user",
+    });
+    }
+
+    }catch(err){
+        console.log(err)
+    }
+  }
   
  

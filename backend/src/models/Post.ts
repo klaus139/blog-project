@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export interface PostAttributes {
   title: string;
-  description: string;
+  body: string;
   image?: string;
   author: mongoose.Schema.Types.ObjectId;
   category: mongoose.Schema.Types.ObjectId;
@@ -20,7 +20,7 @@ const PostSchema = new mongoose.Schema<PostAttributes>(
       required: [true, "title is required"],
       trim: true,
     },
-    description: {
+    body: {
       type: String,
       required: [true, "post description is required"],
       trim: true,

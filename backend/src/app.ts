@@ -7,6 +7,10 @@ dotenv.config()
 
 import indexRouter from './routes/index'
 import authRouter from './routes/Auth'
+import postRouter from './routes/Post'
+import categoryRouter from './routes/Category'
+import { apiError } from './utils/apiError';
+import { globalErrHandler } from './utils/globalErrorHandler';
 
 
 require("./config/database");
@@ -18,9 +22,23 @@ app.use(logger('dev'))
 app.use(cookieParser())
 app.use(cors())
 
-app.use('/', indexRouter)
-app.use('/auth', authRouter)
+app.use('/api/', indexRouter)
+app.use('/api/auth', authRouter)
+app.use('/api/post', postRouter)
+app.use('/api/categories', categoryRouter)
 
+
+
+// 404 error
+app.all("*", (req, res, next) => {
+    // create error
+    const err = new apiError(`Can't find this route ${req.originalUrl}`, 400);
+    // send it to Global errors handling middlware
+    next(err);
+  });
+  
+  // Global Error Handlers Middleware
+  app.use(globalErrHandler);
 
 const port = 4000;
 

@@ -10,7 +10,7 @@ const PostSchema = new mongoose_1.default.Schema({
         required: [true, "title is required"],
         trim: true,
     },
-    description: {
+    body: {
         type: String,
         required: [true, "post description is required"],
         trim: true,

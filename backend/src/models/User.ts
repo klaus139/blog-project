@@ -58,7 +58,8 @@ const userSchema = new mongoose.Schema(
       default: "user",
     },
     salt: {
-        type: String
+        type: String,
+        required: [true, "Salt is required"],
     },
     
   },
