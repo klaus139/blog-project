@@ -3,6 +3,7 @@ import Post from "../models/Post";
 import User from "../models/User";
 import { apiError } from "../utils/apiError";
 import { JwtPayload } from "jsonwebtoken";
+import { getOne } from "./handleFactory";
 
 export const createPost = async (req: JwtPayload, res: Response) => {
   // Create The Post
@@ -51,7 +52,7 @@ export const allPosts = async (req: JwtPayload, res: Response) => {
   };
   
 
-// @desc Get a single post
+ //@desc Get a single post
 export const getPost = (async (req:JwtPayload, res:Response, next:NextFunction) => {
   const post = await Post.findById(req.params.id).populate("author");
 
@@ -59,14 +60,16 @@ export const getPost = (async (req:JwtPayload, res:Response, next:NextFunction) 
     return next(new apiError(`No post for this id ${req.params.id}`, 404));
   }
 
-//   if (post.author.blocked.includes(req.user._id)) {
-//     return next(
-//       new apiError(`Sorry, You Are Not Allowed to Access This Post`, 403)
-//     );
-//   }
+  // if (post.author.blocked.includes(req.user._id)) {
+  //   return next(
+  //     new apiError(`Sorry, You Are Not Allowed to Access This Post`, 403)
+  //   );
+  // }
 
   res.send(post);
 });
+
+//export const getPost = getOne(Post, "post");
 
 // @desc Delete Post
 export const deletePost = async (req:JwtPayload, res:Response, next:NextFunction) => {

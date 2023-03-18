@@ -3,6 +3,7 @@ import logger from 'morgan';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser'
 import cors from 'cors';
+import path from 'path';
 dotenv.config()
 
 import indexRouter from './routes/index'
@@ -10,6 +11,7 @@ import authRouter from './routes/Auth'
 import postRouter from './routes/Post'
 import categoryRouter from './routes/Category'
 import commentRouter from './routes/Comment'
+import imageRouter from './routes/Images'
 import { apiError } from './utils/apiError';
 import { globalErrHandler } from './utils/globalErrorHandler';
 
@@ -22,12 +24,14 @@ app.use(express.json())
 app.use(logger('dev'))
 app.use(cookieParser())
 app.use(cors())
+app.use("/images", express.static(path.join(__dirname, "/images")))
 
 app.use('/api/', indexRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/post', postRouter)
 app.use('/api/categories', categoryRouter)
 app.use('/api/comments', commentRouter)
+app.use("/api/upload", imageRouter)
 
 
 

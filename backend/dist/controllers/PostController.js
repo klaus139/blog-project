@@ -53,19 +53,20 @@ const allPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.allPosts = allPosts;
-// @desc Get a single post
+//@desc Get a single post
 exports.getPost = ((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const post = yield Post_1.default.findById(req.params.id).populate("author");
     if (!post) {
         return next(new apiError_1.apiError(`No post for this id ${req.params.id}`, 404));
     }
-    //   if (post.author.blocked.includes(req.user._id)) {
-    //     return next(
-    //       new apiError(`Sorry, You Are Not Allowed to Access This Post`, 403)
-    //     );
-    //   }
+    // if (post.author.blocked.includes(req.user._id)) {
+    //   return next(
+    //     new apiError(`Sorry, You Are Not Allowed to Access This Post`, 403)
+    //   );
+    // }
     res.send(post);
 }));
+//export const getPost = getOne(Post, "post");
 // @desc Delete Post
 const deletePost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;

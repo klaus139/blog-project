@@ -22,6 +22,7 @@ const categorySchema = new mongoose.Schema<CategoryAttributes>(
       ref: "User",
       required: true,
     },
+    
   },
   { timestamps: true }
 );

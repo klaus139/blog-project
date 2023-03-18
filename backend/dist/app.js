@@ -8,12 +8,14 @@ const morgan_1 = __importDefault(require("morgan"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
+const path_1 = __importDefault(require("path"));
 dotenv_1.default.config();
 const index_1 = __importDefault(require("./routes/index"));
 const Auth_1 = __importDefault(require("./routes/Auth"));
 const Post_1 = __importDefault(require("./routes/Post"));
 const Category_1 = __importDefault(require("./routes/Category"));
 const Comment_1 = __importDefault(require("./routes/Comment"));
+const Images_1 = __importDefault(require("./routes/Images"));
 const apiError_1 = require("./utils/apiError");
 const globalErrorHandler_1 = require("./utils/globalErrorHandler");
 require("./config/database");
@@ -22,11 +24,13 @@ app.use(express_1.default.json());
 app.use((0, morgan_1.default)('dev'));
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)());
+app.use("/images", express_1.default.static(path_1.default.join(__dirname, "/images")));
 app.use('/api/', index_1.default);
 app.use('/api/auth', Auth_1.default);
 app.use('/api/post', Post_1.default);
 app.use('/api/categories', Category_1.default);
 app.use('/api/comments', Comment_1.default);
+app.use("/api/upload", Images_1.default);
 // 404 error
 app.all("*", (req, res, next) => {
     // create error

@@ -1,0 +1,161 @@
+.login-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-intro {
+    width: 100%;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 2rem;
+  }
+  
+  .login-detail {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin-left: 20%;
+  }
+  
+  form div {
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  form label {
+    width: 30%;
+    text-align: left;
+    font-weight: bold;
+    padding-right: 10px;
+  }
+  
+  form input {
+    width: 500px;
+    padding: 12px 20px;
+    margin-right: 50px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+  }
+  
+  form .login-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  form button[type="submit"] {
+    width: 200px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: -250px;
+    
+  }
+
+  
+  form button {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px ;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 300px;
+    display: flex;
+    flex-direction: column;
+
+  
+  }
+
+
+  @media (max-width: 600px) {
+    .login-container, .register-container {
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-intro, .intro-container {
+      width: 100%;
+      text-align: center;
+    }
+    .login-detail, .user-detail {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 0 auto;
+    }
+    form div {
+      width: 100%;
+      margin: 10px 0;
+    }
+    form label {
+      width: 100%;
+      text-align: left;
+      font-weight: bold;
+    }
+    form input {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+    form .login-container, .form .btn-container {
+      display: flex;
+      justify-content: center;
+    }
+    form button[type="submit"] {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    form p {
+      width: 100%;
+      text-align: center;
+    }
+    form button {
+      background-color: #f44336;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }

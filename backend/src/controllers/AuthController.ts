@@ -53,7 +53,7 @@ export const registerUser = async (req: Request, res: Response) => {
   });
 
   if (user) {
-    res.status(201).json({ token: createToken(user._id), data: user });
+    res.status(201).json({message:'user created successfully', token: createToken(user._id), data: user });
   }
 
   

@@ -44,7 +44,7 @@ const registerUser = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             salt,
         });
         if (user) {
-            res.status(201).json({ token: (0, validation_1.createToken)(user._id), data: user });
+            res.status(201).json({ message: 'user created successfully', token: (0, validation_1.createToken)(user._id), data: user });
         }
     }
     catch (err) {
